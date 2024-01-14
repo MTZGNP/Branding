@@ -148,4 +148,3 @@ class DriveBrowser:
                 hash_md5.update(chunk)
         return hash_md5.hexdigest()
 
-# Usage example remains the same

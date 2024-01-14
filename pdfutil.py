@@ -1,6 +1,7 @@
 import PyPDF2
-from difflib import SequenceMatcher
+from difflib import SequenceMatched
 
+# This utility file is AI-generated
 def is_first_page_identical(pdf_path, template_path):
     """
     Check if the first page of a given PDF is identical to a template PDF.

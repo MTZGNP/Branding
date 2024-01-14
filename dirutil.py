@@ -2,7 +2,7 @@ import os
 import shutil
 
 
-# This tool is AI-generated
+# This utility file is AI-generated
 def purge(dir_path):
     """
     Purge all contents of the specified directory.
