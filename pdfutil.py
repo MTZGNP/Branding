@@ -1,5 +1,5 @@
 import PyPDF2
-from difflib import SequenceMatched
+from difflib import SequenceMatcher
 
 # This utility file is AI-generated
 def is_first_page_identical(pdf_path, template_path):
@@ -57,6 +57,3 @@ def prepend_page(template_path, target_path):
     # Write the combined PDF in place
     with open(target_path, 'wb') as output_file:
         pdf_writer.write(output_file)
-
-
-

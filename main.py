@@ -1,8 +1,9 @@
-from driveutil import DriveBrowser, DriveFile
-from dirutil import purge
-from pdfutil import is_first_page_identical,prepend_page
 import json
 import os
+
+from dirutil import purge
+from driveutil import DriveBrowser
+from pdfutil import is_first_page_identical, prepend_page
 
 directory = "tmp"
 if not os.path.exists(directory):
@@ -24,22 +25,22 @@ except FileNotFoundError:
         hashes = []
         json.dump(hashes, file)
 
-PDF_files =  browser.list_files(folder_id, recursive=True,tree=False)
-
+PDF_files = browser.list_files(folder_id, recursive=True, tree=False)
+56
 print(f"found {len(PDF_files)} files")
 for i, File in enumerate(PDF_files):
     browser.writeMIME(File)
-PDF_files = [f for f in PDF_files if (f.mime_type == "application/pdf" or f.name.endswith(".pdf") ) ]
+PDF_files = [f for f in PDF_files if (f.mime_type == "application/pdf" or f.name.endswith(".pdf"))]
 print(f"found {len(PDF_files)} files with extension .pdf:")
 for i, File in enumerate(PDF_files):
-    print(f"#{i+1}, {File.name}")
+    print(f"#{i + 1}, {File.name}")
     if not File.name.endswith(".pdf"):
-        File.name = File.name+".pdf"
-for i,File in enumerate(PDF_files):
+        File.name = File.name + ".pdf"
+for i, File in enumerate(PDF_files):
     try:
-        print(f"\n ~~~~ \n*processing {i+1} out of {len(PDF_files)}\nBeing: {File.name}, aka {File.MD5}")
+        print(f"\n ~~~~ \n*processing {i + 1} out of {len(PDF_files)}\nBeing: {File.name}, aka {File.MD5}")
         if File.MD5 in hashes:
-            print(f"signature {File.MD5} found, skipping file")
+            print(f"signature            {File.MD5} found, skipping file")
             continue
         print(f"signature not found, downloading")
         browser.download_file(File, f"tmp/{File.name}")
@@ -53,7 +54,7 @@ for i,File in enumerate(PDF_files):
         browser.replace_with_local(File)
         print("file uploaded")
     except Exception as error:
-        print("error occurred",error)
+        print("error occurred", error)
 
 # save hashes
 print("\n\n******")
