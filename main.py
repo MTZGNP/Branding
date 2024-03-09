@@ -14,7 +14,7 @@ TEMPLATE_PATH = "signet.pdf"
 SCOPES = ['https://www.googleapis.com/auth/drive']
 service_account_file = "servicekey.json"
 browser = DriveBrowser(service_account_file, SCOPES)
-folder_id = "1mlYpnaRaKukxE7SqLDRaCIS8fNS9zsdy"
+folder_id = "..."
 
 hash_file = 'hashes.json'
 try:
